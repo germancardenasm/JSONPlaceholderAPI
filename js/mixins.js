@@ -23,12 +23,7 @@ const mixins = {
       container.setAttribute("id", i + lastFigureId);
       container.classList.add("person-container");
       const img = this.createImgTag("photo", "../img/dummyImg.png");
-      const flag = this.createImgTag("flag", "../img/dummyFlag.png");
-      flag.src = "../img/dummyflag.png";
-      flag.alt = "dummy image";
-      flag.classList.add("flag");
       container.appendChild(img);
-      container.appendChild(flag);
       const name = document.createElement("figcaption");
       name.innerHTML = "Lorem ipsum";
       name.classList.add("name");

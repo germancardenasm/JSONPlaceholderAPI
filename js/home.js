@@ -15,21 +15,55 @@ const redirectToHome = () => {
 };
 
 const renderHome = async () => {
-  previousLastId = 0;
-  preventScrollListener = false;
-  sessionStorage.setItem("idToShowDetail", 0);
-  sessionStorage.setItem("personToShowDetail", JSON.stringify({}));
-  sessionStorage.setItem("personCountry", JSON.stringify({}));
-  const dataFromServer = await reqDataServer(QTY_HOME);
-  mixins.saveCharacters(dataFromServer.results);
+  initStorage();
   nextFigureId = mixins.renderPeoleFigures(
     QTY_HOME,
     "grid-container",
     previousLastId
   );
-  setNewFiguresInfo(dataFromServer.results);
+  fetchDataFromServer();
+  previousLastId = 0;
+  preventScrollListener = true;
+
   addHomeListeners();
   mixins.setActiveLink("home-link");
+};
+
+const fetchDataFromServer = async () => {
+  let users = await mixins
+    .reqDataServer(config.USERS_URL)
+    .then(console.log("users ready"));
+  let photos = await mixins
+    .reqDataServer(config.PHOTO_URL)
+    .then(console.log("photos ready"));
+  let todos = await mixins
+    .reqDataServer(config.TODOS_URL)
+    .then(console.log("todos ready"));
+  formatServerData(users, photos, todos);
+};
+
+function formatServerData(users, photos, todos) {
+  let newUsers = users.map(user => {
+    user.photo = photos.find(photo => photo.id === user.id);
+    user.todos = todos.filter(todo => todo.userId === user.id);
+    return user;
+  });
+  setNewFiguresInfo(newUsers);
+}
+
+const initStorage = () => {
+  sessionStorage.setItem("idToShowDetail", 0);
+  sessionStorage.setItem("users", JSON.stringify({}));
+  sessionStorage.setItem("photos", JSON.stringify({}));
+  sessionStorage.setItem("todos", JSON.stringify({}));
+  sessionStorage.setItem("personToShowDetail", JSON.stringify({}));
+  sessionStorage.setItem("personCountry", JSON.stringify({}));
+};
+
+const saveDataFromServer = (users, photos, todos) => {
+  sessionStorage.setItem("users", JSON.stringify(users));
+  sessionStorage.setItem("photos", JSON.stringify(photos));
+  sessionStorage.setItem("todos", JSON.stringify(todos));
 };
 
 const reqDataServer = async (qtyCharacters = 1) => {
@@ -40,23 +74,22 @@ const reqDataServer = async (qtyCharacters = 1) => {
   return dataFromServer;
 };
 
-const setNewFiguresInfo = async persons => {
-  const [IMG, FLAG, NAME] = [0, 1, 2];
-  for (let i = 0; i < persons.length; i++) {
-    let personInfo = persons[i];
-    let figure = mixins.getById(i + previousLastId).children;
-    let country = personInfo.nat;
-    figure[IMG].src = personInfo.picture.large;
-    figure[NAME].innerHTML = personInfo.name.first + " " + personInfo.name.last;
-    figure[FLAG].src = `https://www.countryflags.io/${country}/shiny/64.png`;
-  }
+const setNewFiguresInfo = users => {
+  const [IMG, NAME] = [0, 1];
+
+  users.forEach((user, index) => {
+    let figure = mixins.getById(index + previousLastId).children;
+    figure[NAME].innerHTML = user.name;
+    figure[IMG].src = user.photo.thumbnailUrl;
+  });
+
   previousLastId = nextFigureId;
 };
 
 const addHomeListeners = () => {
   const gridContainer = mixins.getById("grid-container");
   gridContainer.addEventListener("click", showModalDetail);
-  window.addEventListener("scroll", loadMorePersons);
+  //window.addEventListener("scroll", loadMorePersons);
 };
 
 const loadMorePersons = async () => {

@@ -4,13 +4,10 @@ const home = {
   render: async () => {
     let view = `
       <article id="home" >
-        <h1 class="main-title">Top Employees</h1>
+        <h1 class="main-title">...Title</h1>
         <blockquote class="blockquote px-1 mt-1  text-left">
             <p class="mb-0">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-              nisi ut aliquip ex ea commodo consequat. </p>
+              dont know yet </p>
         </blockquote>
         <section id="grid-container" class="grid-container">  
         </section>
