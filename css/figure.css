@@ -1,24 +1,51 @@
 .person-container {
   position: relative;
-  color: var(--secondary-color);
+  color: white;
   width: 200px;
   height: 220px;
-  margin: 0.5rem;
-  margin-bottom: 1rem;
-  background-color: var(--third-color);
-  transition: background 0.3s ease;
+  margin: 1rem;
+  margin-bottom: 1.5rem;
   text-align: center;
-  border: 1px solid transparent;
-  border-radius: 5px;
-  box-shadow: 6px 10px 5px 0px rgba(156, 156, 156, 1);
   cursor: pointer;
+  transition: color 1s ease;
+}
+
+.person-container::before {
+  content: '';
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width: 90%;
+  height: 1px;
+  background: radial-gradient(ellipse at right, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 70%);
+  transition: all 1s;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+}
+
+.person-container::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 70%);
+  transition: all 1s;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
 }
 
 .person-container:hover {
-  background-color: var(--secondary-color);
-  border: 1px solid var(--third-color);
-  color: white;
-  box-shadow: 8px 12px 7px 0px rgba(156, 156, 156, 1);
+  color: red;
+}
+
+.person-container:hover::before {
+  background: radial-gradient(ellipse at right, rgba(255, 0, 0, 0.7) 0%, rgba(255, 0, 0, 0.1) 70%);
+}
+
+.person-container:hover::after {
+  background: radial-gradient(ellipse at bottom, rgba(255, 0, 0, 0.7) 0%, rgba(255, 0, 0, 0.1) 70%);
 }
 
 .person-container .photo {
@@ -34,7 +61,7 @@
 
 .person-container .name {
   font-family: PT Sans;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   margin-top: 0rem;
-  text-transform: capitalize;
+  text-transform: uppercase;
 }

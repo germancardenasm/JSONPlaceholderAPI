@@ -1,6 +1,20 @@
 import mixins from "./mixins.js";
-
 import config from "./config.js";
+
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+  console.log(currentScrollPos);
+  if (prevScrollpos > currentScrollPos) {
+    if (currentScrollPos < 100)
+      document.getElementById("navbar").style.top = "0";
+  } else {
+    setTimeout(() => {
+      document.getElementById("navbar").style.top = "-50px";
+    }, 100);
+  }
+  prevScrollpos = currentScrollPos;
+};
 
 const redirectToDetail = e => {
   location.hash = "/detail";
@@ -8,36 +22,38 @@ const redirectToDetail = e => {
 
 async function renderDetail() {
   mixins.setActiveLink("detail-link");
-  const personToShowDetail = await JSON.parse(
-    sessionStorage.getItem("personToShowDetail")
+  const users = await JSON.parse(sessionStorage.getItem("users"));
+  const idToShowDetail = await JSON.parse(
+    sessionStorage.getItem("idToShowDetail")
   );
-  renderPersonDetail(personToShowDetail);
+  renderPersonDetail(users[idToShowDetail]);
 }
 
 const renderPersonDetail = person => {
-  const table = mixins.getById("table-info");
+  const table = mixins.getById("tbody");
   const photo = mixins.getById("photo");
-  const country = JSON.parse(sessionStorage.getItem("personCountry"));
+  const name = mixins.getById("name");
+  const email = mixins.getById("email");
+  const phone = mixins.getById("phone");
   const labels = {
-    name: person.name.first + " " + person.name.last,
-    age: person.dob.age,
     email: person.email,
-    phone: person.phone,
-    cell: person.cell,
-    addres: person.location.street,
-    zip: person.location.postcode,
-    city: person.location.city,
-    country: country.name
+    phone: person.phone
   };
-  photo.src = person.picture.large;
-  Object.keys(labels).forEach((element, index) => {
+  photo.src = person.photo.url;
+  name.textContent = person.name + " - Todos Status";
+  email.textContent = person.email;
+  phone.textContent = person.phone;
+  person.todos.forEach((todo, index) => {
     let row = table.insertRow(index);
-    let cellLabel = row.insertCell(0);
-    cellLabel.classList.add("table-label");
-    let cellCharacterInfo = row.insertCell(1);
-    cellCharacterInfo.classList.add("info");
-    cellLabel.innerHTML = element + ":  ";
-    cellCharacterInfo.innerHTML = labels[element];
+    let num = row.insertCell(0);
+    let todoTitle = row.insertCell(1);
+    let completed = row.insertCell(2);
+    num.innerHTML = index;
+    todoTitle.innerHTML = todo.title;
+    completed.innerHTML =
+      todo.completed === true
+        ? `<i class="fas fa-check-double green"></i>`
+        : `<i class="fas fa-times red"></i>`;
   });
 };
 

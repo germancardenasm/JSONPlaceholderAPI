@@ -1,4 +1,7 @@
 .navbar {
+  margin: 0 auto;
+
+  max-width: 900px;
   padding: 4px 25px;
   opacity: 1;
   transition: opacity, ease-out, 0.5s;
@@ -29,8 +32,8 @@
 }
 
 .navbar .nav-link {
-  font-family: 'PT Sans', sans-serif;
-  font-size: 1.3rem;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 1.1rem;
   padding-right: 1rem;
 }
 
@@ -47,7 +50,7 @@
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .show>.nav-link {
-  color: var(--secondary-color);
+  color: red;
 
 }
 

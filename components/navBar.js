@@ -1,10 +1,8 @@
 const navBar = {
   render: async () => {
     let view = `
-      <nav id = "navbar" class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand logo" href="#">
-          <img src="./img/logo.png" class="d-inline-block align-top" alt="" />
-        </a>
+      <nav id = "navbar" class="navbar fixed-top navbar-expand-sm navbar-dark">
+      <a class="navbar-brand" href="#">Project Control</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -17,7 +15,7 @@ const navBar = {
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <a class="navbar-brand" href="#">Flobant</a>
+          
           <ul id="nav-links" class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li id="home-link" class="nav-item active">
               <a class="nav-link custom-link" href="/#/home"
@@ -25,7 +23,7 @@ const navBar = {
               >
             </li>
             <li id="detail-link"class="nav-item">
-              <a class="nav-link custom-link disabled" href="/#/detail">Detalle</a>
+              <a class="nav-link custom-link" href="/#/detail">Todos</a>
             </li>
           </ul>
           <!-- <form class="form-inline my-2 my-lg-0">

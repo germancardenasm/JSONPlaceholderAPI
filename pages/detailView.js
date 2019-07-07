@@ -5,18 +5,27 @@ const detail = {
     let view = `
           
           <div class="detail px-3" id="detail">
-            <div class="detail-header p-2 p-sm-4 d-flex justify-content-between align-items-center">
-              <a class="detail-logo" href="/#/home">
-                <img src="./img/logo.png" class="d-inline-block align-top" alt="" />
-              </a>
-              <h2 class=" my-0 pr-1 text-capitalize" id="name">Flobant</h1>
+            <div class="detail-header p-2 p-sm-4 d-flex flex-column sticky-top">
+              <h2 class=" my-0 pr-1 text-capitalize" id="name"></h1>
+              <span class="  my-0 pr-1 text-capitalize" id="email"></span>
+              <span class=" my-0 pr-1 text-capitalize" id="phone"></span>
             </div>
-            <div class="detail-container container-fluid px-0 d-flex flex-row justify-content-center justify-content-sm-around flex-column flex-sm-row"> 
+            <div class="detail-container container-fluid mx-0 px-2 d-flex flex-column "> 
               <div id="photo-container"  class="photo-container my-4">
                 <img id="photo" class="photo" src="../img/dummyImg.png" alt="" />
               </div>
               <div id="info-container" class="info-container ml-2 my-sm-4">
-                <table id="table-info" class="table-info text-capitalize"></table>
+                <table id="table-info" class="table table-responsive table-striped table-dark text-capitalize">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Todo</th>
+                      <th scope="col">Completed</th>
+                    </tr>               
+                  </thead>
+                  <tbody id="tbody">
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
