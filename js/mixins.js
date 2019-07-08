@@ -1,6 +1,3 @@
-import config from "./config.js";
-const API_URL = config.API_URL;
-
 const mixins = {
   reqDataServer: function(url, characterId = "") {
     return fetch(url + characterId)
@@ -90,9 +87,10 @@ const mixins = {
         if (currentScrollPos < 100)
           document.getElementById("navbar").style.top = "0";
       } else {
-        setTimeout(() => {
-          document.getElementById("navbar").style.top = "-80px";
-        }, 100);
+        if (currentScrollPos > 50)
+          setTimeout(() => {
+            document.getElementById("navbar").style.top = "-100px";
+          }, 100);
       }
       prevScrollpos = currentScrollPos;
     };

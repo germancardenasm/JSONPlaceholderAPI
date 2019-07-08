@@ -1,7 +1,6 @@
 @import './colors.css';
 @import './navbar.css';
 @import './figure.css';
-@import './modal.css';
 @import './detail.css';
 
 body {
@@ -23,11 +22,6 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding-top: 100px;
-  transition: filter, ease-out, 0.5s;
-  -webkit-filter: blur(0px);
-  -moz-filter: blur(0px);
-  -o-filter: blur(0px);
-  -ms-filter: blur(0px);
 }
 
 .page-wrapper .content-wrapper .main-title {
@@ -45,7 +39,7 @@ body {
   width: 100%;
   height: 1px;
   background: radial-gradient(ellipse at left, rgba(255, 0, 0, 0.7) 0%, rgba(255, 0, 0, 0.1) 70%);
-  transition: all 1s;
+  transition: all 0.5s;
 }
 
 .content-wrapper>article {

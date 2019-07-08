@@ -7,7 +7,7 @@
   margin-bottom: 1.5rem;
   text-align: center;
   cursor: pointer;
-  transition: color 1s ease;
+  transition: color 0.5s ease;
 }
 
 .person-container::before {
@@ -17,10 +17,10 @@
   bottom: 0px;
   width: 90%;
   height: 1px;
-  background: radial-gradient(ellipse at right, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 70%);
-  transition: all 1s;
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
+  background: white;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
 }
 
 .person-container::after {
@@ -30,10 +30,10 @@
   top: 0;
   width: 1px;
   height: 100%;
-  background: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 70%);
-  transition: all 1s;
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
+  background: white;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
 }
 
 .person-container:hover {
@@ -41,11 +41,11 @@
 }
 
 .person-container:hover::before {
-  background: radial-gradient(ellipse at right, rgba(255, 0, 0, 0.7) 0%, rgba(255, 0, 0, 0.1) 70%);
+  background: red;
 }
 
 .person-container:hover::after {
-  background: radial-gradient(ellipse at bottom, rgba(255, 0, 0, 0.7) 0%, rgba(255, 0, 0, 0.1) 70%);
+  background: red
 }
 
 .person-container .photo {
