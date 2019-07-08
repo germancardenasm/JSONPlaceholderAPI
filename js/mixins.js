@@ -79,6 +79,23 @@ const mixins = {
         .toLowerCase()
         .toLowerCase() || "/";
     return url;
+  },
+
+  hideNavbar: function() {
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+      console.log(currentScrollPos);
+      if (prevScrollpos > currentScrollPos) {
+        if (currentScrollPos < 100)
+          document.getElementById("navbar").style.top = "0";
+      } else {
+        setTimeout(() => {
+          document.getElementById("navbar").style.top = "-80px";
+        }, 100);
+      }
+      prevScrollpos = currentScrollPos;
+    };
   }
 };
 

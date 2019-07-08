@@ -1,26 +1,17 @@
 import mixins from "./mixins.js";
 import config from "./config.js";
 
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-  var currentScrollPos = window.pageYOffset;
-  console.log(currentScrollPos);
-  if (prevScrollpos > currentScrollPos) {
-    if (currentScrollPos < 100)
-      document.getElementById("navbar").style.top = "0";
-  } else {
-    setTimeout(() => {
-      document.getElementById("navbar").style.top = "-50px";
-    }, 100);
-  }
-  prevScrollpos = currentScrollPos;
-};
-
 const redirectToDetail = e => {
   location.hash = "/detail";
 };
 
 async function renderDetail() {
+  mixins.hideNavbar();
+  window.scrollBy({
+    top: 0,
+    left: 0,
+    behavior: "smooth"
+  });
   mixins.setActiveLink("detail-link");
   const users = await JSON.parse(sessionStorage.getItem("users"));
   const idToShowDetail = await JSON.parse(

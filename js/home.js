@@ -13,6 +13,7 @@ const redirectToHome = () => {
 
 const renderHome = async () => {
   initStorage();
+  mixins.hideNavbar();
   previousLastId = 0;
   nextFigureId = mixins.renderPeoleFigures(
     QTY_HOME,

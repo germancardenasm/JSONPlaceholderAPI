@@ -4,10 +4,10 @@ const home = {
   render: async () => {
     let view = `
       <article id="home" >
-        <h1 class="main-title ">Project Members</h1>
+        <h1 class="main-title sticky-top">Project Members</h1>
         <blockquote class="blockquote px-1 mt-1  text-left">
             <p class="mb-0">
-              dont know yet </p>
+               </p>
         </blockquote>
         <section id="grid-container" class="grid-container">  
         </section>

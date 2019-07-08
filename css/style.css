@@ -12,7 +12,7 @@ body {
   max-width: 900px;
   margin: 0 auto;
   height: 100%;
-  background-color: black;
+  background: black;
 }
 
 .blockquote {
@@ -30,13 +30,22 @@ body {
   -ms-filter: blur(0px);
 }
 
-.content-wrapper .main-title {
-  color: white
+.page-wrapper .content-wrapper .main-title {
+  color: white;
+  padding: 1rem;
+  background-color: black;
+  font-size: 1.8rem;
 }
 
-.page-wrapper .content-wrapper .main-title {
-  padding: 0px;
-  font-size: 1.8rem;
+.page-wrapper .content-wrapper .main-title::after {
+  content: '';
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 1px;
+  background: radial-gradient(ellipse at left, rgba(255, 0, 0, 0.7) 0%, rgba(255, 0, 0, 0.1) 70%);
+  transition: all 1s;
 }
 
 .content-wrapper>article {

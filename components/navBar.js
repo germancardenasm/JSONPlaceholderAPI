@@ -1,7 +1,7 @@
 const navBar = {
   render: async () => {
     let view = `
-      <nav id = "navbar" class="navbar fixed-top navbar-expand-sm navbar-dark">
+      <nav id = "navbar" class="navbar fixed-top py-4 navbar-expand-sm navbar-dark">
       <a class="navbar-brand" href="#">Project Control</a>
         <button
           class="navbar-toggler"
